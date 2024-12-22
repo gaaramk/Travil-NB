@@ -2,20 +2,366 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer components {
+  /* navbar */
+  .navbar {
+    @apply transition-all duration-300 h-[10vh] z-30 fixed w-full;
   }
-}
+  .navbar .navbarContainer {
+    @apply h-full w-[90%] mx-auto flex justify-between items-center;
+  }
+  .navbar .logoContainer {
+    @apply flex items-center space-x-2;
+  }
+  .navbar .logo {
+    @apply w-10 h-10 bg-rose-500 rounded-full flex justify-center items-center flex-col;
+  }
+  .navbar .logoIcon {
+    @apply w-6 h-6 text-white;
+  }
+  .navbar .logoText {
+    @apply text-white font-bold text-xl md:text-2xl uppercase;
+  }
+  .navbar .navLinks {
+    @apply hidden lg:flex items-center space-x-10;
+  }
+  .navbar .linkText {
+    @apply relative text-white text-base font-medium w-fit block after:block after:content-[''] after:absolute after:h-[3px] after:bg-yellow-400 after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition-all after:origin-right duration-300;
+  }
+  .navbar .btnContainer {
+    @apply flex items-center space-x-4;
+  }
+  .navbar .bookBtn {
+    @apply md:px-12 md:py-2.5 px-8 py-2 text-black text-base bg-white hover:bg-gray-200 transition-all duration-300 rounded-lg;
+  }
+  .navbar .burgerMenu {
+    @apply w-8 h-8 cursor-pointer text-white lg:hidden;
+  }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  /* mobile nav */
+  .mobileNav .overlay {
+    @apply fixed inset-0 transform transition-all duration-500 z-40 bg-black opacity-70 w-full h-screen;
+  }
+  .mobileNav .mobileLinks {
+    @apply text-white fixed flex flex-col justify-center h-full transform transition-all duration-500 delay-300 w-[80%] sm:w-[60%] bg-red-900 space-y-6 z-50;
+  }
+  .mobileNav .mobileLinks .mobileLinkText {
+    @apply text-white w-fit text-[20px] ml-12 border-b-[1.5px] pb-1 border-white sm:text-[30px];
+  }
+  .mobileNav .closeBtn {
+    @apply absolute top-[0.7rem] right-[1.4rem] sm:w-8 sm:h-8 w-6 h-6 cursor-pointer;
+  }
+
+  /* home */
+  .homeComp {
+    @apply overflow-hidden;
+  }
+
+  /* hero section */
+  .hero {
+    @apply relative w-full h-[120vh] sm:h-[100vh];
+  }
+  .overlayHero {
+    @apply absolute top-0 left-0 w-full h-full bg-gray-800 opacity-70;
+  }
+  .heroVideo {
+    @apply w-full h-full object-cover;
+  }
+  .heroText {
+    @apply absolute z-20 w-full h-full top-[50%] left-[50%] transform translate-x-[-50%] translate-y-[-50%];
+  }
+  .heroTextContainer {
+    @apply flex flex-col justify-center items-center w-full h-full;
+  }
+  .heroTextH1 {
+    @apply text-[25px] mb-4 md:mb-0 text-center md:text-[35px] lg:text-[45px] tracking-[0.7rem] text-white font-bold uppercase;
+  }
+  .heroTextP {
+    @apply md:text-base text-center text-lg text-white font-normal [word-spacing:5px];
+  }
+
+  /* search box */
+  .searchBox {
+    @apply bg-white rounded-lg p-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 items-center justify-center gap-8 mt-4 sm:mt-12 w-[95%] sm:w-[80%];
+  }
+  .searchSubBox {
+    @apply flex items-center space-x-6;
+  }
+  .searchIcon {
+    @apply w-6 h-6 text-blue-600;
+  }
+  .searchInputText {
+    @apply text-lg font-medium mb-[0.2rem];
+  }
+  .searchInput {
+    @apply w-full outline-none border-none placeholder:text-gray-800;
+  }
+  .heroBtn {
+    @apply rounded px-14 md:px-28 -mt-4 py-2.5 text-white overflow-hidden bg-rose-600 relative hover:bg-gradient-to-r hover:from-red-500 hover:to-red-400 hover:ring-2 hover:ring-offset-2 hover:ring-red-400 transition-all ease-out duration-300;
+  }
+  .heroBtn .spanOne {
+    @apply absolute right-0 w-8 h-32 -mt-12 transition-all duration-1000 transform translate-x-12 bg-white opacity-10 rotate-12;
+  }
+  .heroBtn .btnText {
+    @apply relative font-bold;
+  }
+
+  /* heading section */
+  .headingSection {
+    @apply w-[80%] mx-auto;
+  }
+  .headingH2 {
+    @apply text-xl sm:text-3xl font-bold text-blue-950;
+  }
+  .headingP {
+    @apply mt-2 text-sm sm:text-base text-gray-700 font-medium;
+  }
+
+  /* destination section */
+  .destination {
+    @apply py-20;
+  }
+  .destinationContent {
+    @apply mt-14 w-[80%] mx-auto;
+  }
+
+  /* destination slider */
+  .destinationSliderItem {
+    @apply m-3;
+  }
+  .destinationSliderItemContainer {
+    @apply relative h-[400px];
+  }
+  .overlaySliderImage {
+    @apply absolute inset-0 bg-black opacity-25 rounded-lg;
+  }
+  .sliderImage {
+    @apply h-full w-full object-cover rounded-lg;
+  }
+  .destinationSliderItemTextH3 {
+    @apply text-lg font-semibold mt-4;
+  }
+  .destinationSliderItemTextP {
+    @apply text-sm font-medium text-gray-600;
+  }
+
+  /* hotel section */
+  .hotelSection {
+    @apply py-20;
+  }
+  .hotelSectionContent {
+    @apply w-[80%] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 items-center gap-8 mt-16;
+  }
+
+  /* hotel card */
+  .hotelCardContent {
+    @apply relative h-[300px] w-full rounded-lg cursor-pointer overflow-hidden;
+  }
+  .hotelCardWishlist {
+    @apply absolute top-4 right-4 z-20 w-9 h-9 bg-white rounded-full text-black flex justify-center items-center flex-col;
+  }
+  .hotelCardHeart {
+    @apply w-3 h-3;
+  }
+  .hotelCardOverlay {
+    @apply absolute inset-0 bg-black opacity-25 z-10;
+  }
+  .hotelCardImage {
+    @apply overflow-hidden h-full w-full transition-all duration-300 object-cover ease-in-out;
+  }
+  .hotelCardName {
+    @apply mt-4 text-lg font-semibold text-blue-950 hover:text-black transition-all duration-300 cursor-pointer;
+  }
+  .hotelCardLocation {
+    @apply mt-3 mb-6 text-sm font-medium text-gray-600;
+  }
+  .hotelCardRating {
+    @apply flex items-center space-x-2;
+  }
+  .hotelCardRatingContainer {
+    @apply p-2 bg-blue-800 rounded-md text-white font-bold text-xs;
+  }
+  .hotelCardRatingText {
+    @apply text-sm text-gray-800;
+  }
+  .hotelCardReviews {
+    @apply text-sm font-bold text-gray-800;
+  }
+  .hotelCardPriceText {
+    @apply mt-3 text-gray-700 font-medium;
+  }
+  .hotelCardPriceTextSpan {
+    @apply text-blue-600 font-bold;
+  }
+
+  /* why choose */
+  .whyChoose {
+    @apply pt-16 pb-24;
+  }
+  .whyChooseContent {
+    @apply w-[80%] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-center gap-16 mt-20;
+  }
+
+  /* why choose card */
+  .whyChooseCardImage {
+    @apply mx-auto;
+  }
+  .whyChooseCardTitle {
+    @apply mt-6 text-center text-gray-900 font-medium text-lg;
+  }
+  .whyChooseCardP {
+    @apply mt-2 text-center text-xs font-medium text-gray-700;
+  }
+
+  /* reviews */
+  .reviews {
+    @apply py-20 flex items-center justify-center flex-col bg-[#13357b];
+  }
+  .reviewsContainer {
+    @apply w-[80%] mx-auto grid grid-cols-1 lg:grid-cols-2 items-center gap-16;
+  }
+  .reviewsH1 {
+    @apply text-2xl font-semibold text-white;
+  }
+  .reviewsP {
+    @apply mt-6 text-gray-200;
+  }
+  .reviewsRating {
+    @apply mt-6 flex items-center space-x-6;
+  }
+  .reviewsRatingP {
+    @apply text-2xl font-bold text-white;
+  }
+  .reviewsRatingOverall {
+    @apply mb-2 text-white;
+  }
+  .reviewsRatingStars {
+    @apply flex items-center;
+  }
+  .reviewsRatingStar {
+    @apply text-white;
+  }
+
+  /* reviews slider */
+  .reviewsSlider {
+    @apply overflow-hidden;
+  }
+  .reviewsSlider {
+    @apply w-[90%] h-[350px];
+  }
+  .reviewsSliderItem {
+    @apply bg-white rounded-3xl block;
+  }
+  .reviewsSliderItemContainer {
+    @apply w-[80%] mx-auto mt-16;
+  }
+  .reviewsSliderItemText {
+    @apply text-xs sm:text-sm md:text-base font-semibold;
+  }
+  .reviewsSliderItemIcon {
+    @apply flex items-center mt-4;
+  }
+  .reviewsSliderItemIconStar {
+    @apply md:w-6 md:h-6 w-3 h-3 text-yellow-600;
+  }
+  .reviewsSliderItemProfile {
+    @apply mt-10;
+  }
+  .reviewsSliderItemProfileContainer {
+    @apply flex items-center space-x-4;
+  }
+  .reviewsSliderItemProfileImage {
+    @apply rounded-full;
+  }
+  .reviewsSliderItemProfileName {
+    @apply text-sm sm:text-lg font-semibold;
+  }
+  .reviewsSliderItemProfileJob {
+    @apply text-gray-600 text-xs sm:text-base;
+  }
+
+  /* news */
+  .news {
+    @apply py-16;
+  }
+  .newsContent {
+    @apply w-[80%] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 items-center gap-10 mt-20;
+  }
+
+  /* news card */
+  .newsCardImageContainer {
+    @apply h-[300px];
+  }
+  .newsCardImage {
+    @apply w-full h-full object-cover rounded-lg;
+  }
+  .newsCardTextH3 {
+    @apply mt-6 text-lg text-gray-950 font-semibold hover:text-blue-950 transition-all duration-200 cursor-pointer;
+  }
+  .newsCardTextP {
+    @apply text-sm text-gray-600 mt-3;
+  }
+
+  /* news letter */
+  .newsLetter {
+    @apply bg-black py-16 flex items-center justify-center w-full flex-col;
+  }
+  .newsLetterIcon {
+    @apply w-16 h-16 mt-20 text-white;
+  }
+  .newsLetterText {
+    @apply text-center;
+  }
+  .newsLetterH1 {
+    @apply text-lg sm:text-xl md:text-2xl mt-10 tracking-widest font-semibold text-white;
+  }
+  .newsLetterP {
+    @apply text-xs sm:text-sm text-white mt-3;
+  }
+  .newsLetterInputContainer {
+    @apply w-full;
+  }
+  .newsLetterInput {
+    @apply px-6 py-3.5 bg-white mt-8 w-[95%] sm:w-[80%] md:w-[60%] lg:w-[40%] block mx-auto rounded-lg outline-none;
+  }
+  .newsLetterButton {
+    @apply px-6 py-3.5 bg-blue-900 hover:bg-blue-950 text-white transition-all duration-200 ease-in-out mt-3 w-[95%] sm:w-[80%] md:w-[60%] lg:w-[40%] block mx-auto rounded-lg outline-none;
+  }
+
+  /* footer */
+  .footer {
+    @apply py-16;
+  }
+  .footerContainer {
+    @apply w-[80%] mx-auto items-start grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10;
+  }
+  .part {
+    @apply space-y-5;
+  }
+  .FooterHeader {
+    @apply text-lg font-bold;
+  }
+  .footerP {
+    @apply text-gray-800 font-medium cursor-pointer text-sm hover:text-blue-950;
+  }
+  .footerNum {
+    @apply text-sm text-gray-600;
+  }
+  .footerNumSpan {
+    @apply text-base font-bold text-blue-950 mt-1;
+  }
+
+  /* footer bottom */
+  .footerBottom {
+    @apply mt-8 pt-8 border-t w-[80%] mx-auto flex flex-col md:flex-row justify-between items-center text-gray-600 text-sm;
+  }
+  .footerBottomP {
+    @apply text-center md:text-left;
+  }
+  .footerBottomIcons {
+    @apply flex items-center space-x-4 mt-4 md:mt-0;
+  }
+  .footerBottomIcon {
+    @apply text-gray-500 hover:text-gray-800;
+  }
 }
