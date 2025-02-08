@@ -10,7 +10,7 @@ const News = () => {
       <div className="newsContent">
         <div>
           <NewsCard
-            image="/images/n1.jpg"
+            image="./images/n1.jpg"
             title="Top 10 Best Places to Visit in Australia"
             date="May 20, 2023"
           />
@@ -18,7 +18,7 @@ const News = () => {
 
         <div>
           <NewsCard
-            image="/images/n2.jpg"
+            image="./images/n2.jpg"
             title="Top 10 Best Places to Visit in Palestine"
             date="Oct 7, 2023"
           />
@@ -26,7 +26,7 @@ const News = () => {
 
         <div>
           <NewsCard
-            image="/images/n3.jpg"
+            image="./images/n3.jpg"
             title="Top 10 Best Places to Visit in Egypt"
             date="jan 25, 2011"
           />
@@ -34,7 +34,7 @@ const News = () => {
 
         <div>
           <NewsCard
-            image="/images/n4.jpg"
+            image="./images/n4.jpg"
             title="Top 10 Best Places to Visit in Syria"
             date="Dec 8, 2024"
           />
